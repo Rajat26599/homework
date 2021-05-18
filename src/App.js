@@ -5,11 +5,11 @@ import { jsPDF } from "jspdf";
 // import {html2canvas} from 'html2canvas';
 
 // IMPORTING FONTS
-import Caveat from './assets/fonts/Caveat';
-import ArchitectsDaughter from './assets/fonts/ArchitectsDaughter';
-import DancingScript from './assets/fonts/DancingScript';
-import GreatVibes from './assets/fonts/GreatVibes';
-import Satisfy from './assets/fonts/Satisfy';
+import Caveat from './assets/fonts/Caveat-Regular.ttf';
+import ArchitectsDaughter from './assets/fonts/ArchitectsDaughter-Regular.ttf';
+import DancingScript from './assets/fonts/DancingScript-VariableFont_wght.ttf';
+import GreatVibes from './assets/fonts/GreatVibes-Regular.ttf';
+import Satisfy from './assets/fonts/Satisfy-Regular.ttf';
 
 
 //IMPORTING IMAGES
@@ -60,35 +60,32 @@ function App() {
     //SETTING FONT IN PDF
     switch (family?family:"Satisfy") {
       case "Architects Daughter":
-        doc.addFileToVFS("MyFont.ttf", ArchitectsDaughter);
+        doc.addFont(ArchitectsDaughter, "MyFont", "normal");
         break;
       case "Caveat":
-        doc.addFileToVFS("MyFont.ttf", Caveat);
+        doc.addFont(Caveat, "MyFont", "normal");
         break;
       case "Dancing Script":
-        doc.addFileToVFS("MyFont.ttf", DancingScript);
+        doc.addFont(DancingScript, "MyFont", "normal");
         break;
       case "Great Vibes":
-        doc.addFileToVFS("MyFont.ttf", GreatVibes);
+        doc.addFont(GreatVibes, "MyFont", "normal");
         break;
       case "Satisfy":
-        doc.addFileToVFS("MyFont.ttf", Satisfy);
+        doc.addFont(Satisfy, "MyFont", "normal");
         break;
       default:
 
     }
 
-    doc.addFont("MyFont.ttf", "MyFont", "normal");
     doc.setFont("MyFont");
-    doc.text(content, x, y);
-    doc.save("a4.pdf");
+    doc.setFontSize(size?size:16)
+    var splitContent = doc.splitTextToSize(content, 210);
     console.log(x);
+    doc.text(splitContent, x, y?y:5);
+    doc.save("a4.pdf");
   };
 
-  //GET PAPER
-  const getPaper = () => {
-    console.log(paper);
-  }
 
   // HOOKS
   const [content, setContent] = useState("");
@@ -163,10 +160,10 @@ function App() {
             <input
               className="form-control col-2"
               type="number"
-              min="0"
+              min="5"
               value={y}
               onChange={(e)=>setY(e.target.value)}
-              placeholder="0" />
+              placeholder="5" />
           </div>
         </div>
 
@@ -186,7 +183,7 @@ function App() {
           <div className="col-sm-6" id="previewArea">
             <img
               id="preview-img"
-              src={paper=="paper1"?paper1:paper=="paper2"?paper2:paper=="paper3"?paper3:paper4}
+              src={paper==="paper2"?paper2:paper==="paper3"?paper3:paper==="paper4"?paper4:paper1}
               alt=""
             />
             <p
@@ -196,7 +193,7 @@ function App() {
                 fontSize:size+'px',
                 color:color,
                 left:x+'%',
-                top:y+'%'
+                top:parseInt(y)-5+'%'
               }}>
               {content}
             </p>
