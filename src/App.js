@@ -152,10 +152,10 @@ function App() {
             <input
               className="form-control col-2"
               type="number"
-              min="3"
+              min="0"
               value={x}
               onChange={(e)=>setX(e.target.value)}
-              placeholder="3" />
+              placeholder="0" />
             <label className="col-1" htmlFor="paper-select">Y:</label>
             <input
               className="form-control col-2"
@@ -192,7 +192,7 @@ function App() {
                 fontFamily:family,
                 fontSize:size+'px',
                 color:color,
-                left:x+'%',
+                left:parseInt(x)+3+'%',
                 top:parseInt(y)-5+'%'
               }}>
               {content}
