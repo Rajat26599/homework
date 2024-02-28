@@ -10,6 +10,7 @@ import { Homework } from './components/homework/Homework';
 import { VideoBackground } from './components/common/videoBackground/VideoBackground';
 import { useEffect, useState } from 'react';
 import { HomeButton } from './components/common/homeButton/HomeButton';
+import { CoverLetter } from './components/coverLetter/CoverLetter';
 
 
 function App() {
@@ -33,6 +34,11 @@ function App() {
             exact
             path="/homework"
             element={<Homework />}
+        ></Route>
+        <Route
+            exact
+            path="/cover-letter-generator"
+            element={<CoverLetter />}
         ></Route>
       </Routes>
 
