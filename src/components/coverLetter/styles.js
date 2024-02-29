@@ -7,14 +7,16 @@ export const CoverLetterWrapper = styled.div`
     padding-right: 2rem;
     padding-top: 5rem;
 `
-export const SidebarWrapper = styled.div`
-    width: 30%;
+const BackgroundCard = styled.div`
     background-color: rgba(0,0,0,0.5);
+    padding: 1rem;
     border-radius: 1rem;
 `
-export const MainWrapper = styled.div`
+export const SidebarWrapper = styled(BackgroundCard)`
+    width: 20%;
+`
+export const MainWrapper = styled(BackgroundCard)`
     display: flex;
-    width: 60%;
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 1rem;
+    width: 70%;
+    min-height: 70vh;
 `

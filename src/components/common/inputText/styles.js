@@ -8,4 +8,6 @@ export const InputTextWrapper = styled.div`
 export const Input = styled.input`
     color: white;
     background: transparent;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
 `
