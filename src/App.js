@@ -9,7 +9,8 @@ import { Dashboard } from "./components/dashboard/Dashboard";
 import { Homework } from './components/homework/Homework';
 import { VideoBackground } from './components/common/videoBackground/VideoBackground';
 import { useEffect, useState } from 'react';
-import { HomeButton } from './components/common/homeButton/HomeButton';
+import { CoverLetter } from './components/coverLetter/CoverLetter';
+import { Button } from './components/common/button/Button';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
   return (
     <div>
       {pathname !== '/' && <VideoBackground></VideoBackground>}
-      {pathname !== '/' && <HomeButton></HomeButton>}
+      {pathname !== '/' && <Button type='home'>Home</Button>}
       <Routes>
         <Route
             exact
@@ -33,6 +34,11 @@ function App() {
             exact
             path="/homework"
             element={<Homework />}
+        ></Route>
+        <Route
+            exact
+            path="/cover-letter-generator"
+            element={<CoverLetter />}
         ></Route>
       </Routes>
 
